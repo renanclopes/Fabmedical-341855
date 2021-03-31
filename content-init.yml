@@ -1,4 +1,4 @@
-name: content-api
+name: content-init
 
 # This workflow is triggered on push to the 'content-web' directory of the  master branch of the repository
 on:
@@ -6,18 +6,18 @@ on:
     branches:
     - master
     paths:
-    - 'content-api/**'
+    - 'content-init/**'
 
   # Configure workflow to also support triggering manually
   workflow_dispatch:
 
 # Environment variables are defined so that they can be used throughout the job definitions.
 env:
-  imageRepository: 'content-api'
-  resourceGroupName: 'Fabmedical-[SHORT_SUFFIX]'
-  containerRegistryName: 'fabmedical[SHORT_SUFFIX]'
-  containerRegistry: 'fabmedical[SHORT_SUFFIX].azurecr.io'
-  dockerfilePath: './content-api'
+  imageRepository: 'content-init'
+  resourceGroupName: 'fabmedical-[DeploymentID]'
+  containerRegistryName: 'acr[DeploymentID]'
+  containerRegistry: 'acr[DeploymentID].azurecr.io'
+  dockerfilePath: './content-init'
   tag: '${{ github.run_id  }}'
 
 # Jobs define the actions that take place when code is pushed to the master branch
